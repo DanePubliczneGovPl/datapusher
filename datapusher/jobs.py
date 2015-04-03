@@ -340,7 +340,22 @@ def push_to_datastore(task_id, input, dry_run=False):
         except:
             raise util.JobError(e)
 
-    row_set = table_set.tables.pop()
+    not_empty_tables = []
+    for table in table_set.tables:
+        offset, headers = messytables.headers_guess(table.sample)
+
+        if headers:
+            not_empty_tables.append(table)
+        else:
+            logger.info('Skipping table {0}: No headers'.format(table))
+
+    if not not_empty_tables:
+        raise util.JobError('Could not find any data. Finishing.')
+
+    for table in not_empty_tables[1:]:
+        logger.info('Skipping table {0}: Multiple tables'.format(table))
+
+    row_set = table_set.tables.pop(0) # Process first
     offset, headers = messytables.headers_guess(row_set.sample)
     row_set.register_processor(messytables.headers_processor(headers))
     row_set.register_processor(messytables.offset_processor(offset + 1))

@@ -1,0 +1,27 @@
+APScheduler==2.1.2
+certifi==2016.8.8
+chardet==2.1.1
+ckanserviceprovider==0.0.3
+-e git+https://github.com/DanePubliczneGovPl/datapusher@a7c153cdf224271d18fae4fea794c394178fcec8#egg=datapusher
+Flask==0.9
+Flask-Admin==1.1.0
+Flask-Login==0.2.11
+html5lib==0.99999
+idna==2.1
+Jinja2==2.7.3
+json-table-schema==0.2
+lxml==3.4.4
+MarkupSafe==0.23
+messytables==0.14.5
+python-dateutil==1.5
+python-magic==0.4.6
+python-slugify==1.0.2
+requests==2.7.0
+six==1.10.0
+SQLAlchemy==0.7.8
+Unidecode==0.4.17
+urllib3==1.16
+webencodings==0.5
+Werkzeug==0.10.4
+WTForms==2.0.2
+xlrd==0.9.3
